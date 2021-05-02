@@ -1,0 +1,78 @@
+// POTENTIAL DEFINITE FIX FOR THAT ONE HEALTH ANIMATION BUG IN TF2
+//
+// I'll put notes to explain stuff where I feel is necessary.
+// (Feel free to credit Zeesastrous if you implement this fix! <3)
+// **********************************************************************************
+ 
+// === OVERHEAL ===
+ 
+event HudHealthBonusPulse
+{
+	RunEvent HudHealthBonusPulseCycle1 0.00
+}
+ 
+event HudHealthBonusPulseCycle1
+{
+	RunEvent HudHealthBonusPulseMain 	0.0
+	RunEvent HudHealthBonusPulseCycle2 	0.25
+}
+ 
+event HudHealthBonusPulseCycle2
+{
+	RunEvent HudHealthBonusPulseMain 	0.0
+	RunEvent HudHealthBonusPulseLoop1 	0.25
+}
+ 
+event HudHealthBonusPulseMain
+{
+	// [ your HUD animation goes here ]
+ 
+	RunEvent HudHealthReset 0.2499
+}
+ 
+event HudHealthBonusPulseStop
+{
+	RunEvent HudHealthReset 0.0
+ 
+	StopEvent HudHealthBonusPulseCycle1		0.0
+	StopEvent HudHealthBonusPulseCycle2		0.0
+}
+ 
+// === LOW HEALTH ===
+ 
+event HudHealthDyingPulse
+{	
+	RunEvent HudHealthDyingPulseCycle1 0.01	
+}
+ 
+event HudHealthDyingPulseCycle1
+{
+	RunEvent HudHealthDyingPulseMain 	0.0
+	RunEvent HudHealthDyingPulseCycle2 	0.25
+}
+ 
+event HudHealthDyingPulseCycle2
+{
+	RunEvent HudHealthDyingPulseMain 	0.0
+	RunEvent HudHealthDyingPulseCycle1 	0.25
+}
+ 
+event HudHealthDyingPulseMain
+{
+	// [ your HUD animation goes here ]
+ 
+	RunEvent HudHealthReset 0.2499
+}
+event HudHealthDyingPulseStop
+{
+	RunEvent HudHealthReset 0.0
+ 
+	StopEvent HudHealthDyingPulseCycle1 		0.0
+	StopEvent HudHealthDyingPulseCycle2 		0.0
+}
+ 
+ 
+event HudHealthReset
+{
+	// [ your HUD animation to reset health stuff goes here ]
+}

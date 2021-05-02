@@ -1,0 +1,2 @@
+// for some stupid reason they all rely on heavy_red.res but the color doesnt change?!? 
+// this is some serious source spaghetti
